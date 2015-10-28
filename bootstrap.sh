@@ -9,4 +9,6 @@ service ntp reload
 echo "Europe/Zurich" > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 
+# ruby gems
+gem install chunky_png
 
