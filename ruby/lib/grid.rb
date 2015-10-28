@@ -1,6 +1,6 @@
 # grid.rb
 #
-# vim: ft=ruby sw= ts=2
+# vim: ft=ruby sw=2 ts=2
 #
 # grid class contains all cells of the maze
 #
@@ -77,6 +77,35 @@ class Grid
 				yield cell if cell
 			end
 		end
+	end
+
+	# output grid as ASCII art
+	def to_s
+		# top border
+		output = "+" + "---+" * columns + "\n"
+
+		each_row do |row|
+			top = "|"
+			bottom = "+"
+
+			row.each do |cell|
+				# create a dummy, if no cell present (used by special geometries)
+				cell = Cell.new(-1, -1) unless cell
+
+				body = "   " # 3 spaces
+				east_boundary = (cell.linked?(cell.east) ? " " : "|")
+				top << body << east_boundary
+
+				south_boundary = (cell.linked?(cell.south) ? "   " : "---")
+				corner = "+"
+				bottom << south_boundary << corner
+			end
+
+			output << top << "\n"
+			output << bottom << "\n"
+		end
+
+		output
 	end
 
 end

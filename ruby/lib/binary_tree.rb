@@ -1,6 +1,6 @@
 # binary_tree.rb
 #
-# vim: ft=ruby sw= ts=2
+# vim: ft=ruby sw=2 ts=2
 #
 # generate a maze with binary tree algorithm
 #

@@ -1,6 +1,6 @@
 # cell.rb
 #
-# vim: ft=ruby sw= ts=2
+# vim: ft=ruby sw=2 ts=2
 #
 # cell class as basic element for a maze
 #
