@@ -1,25 +1,29 @@
 {
-  "name": "mazes",
-  "version": "1.0.0",
-  "description": "Code from the book Mazes for Programmers",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kkirstein/programming-mazes.git"
-  },
-  "keywords": [
-    "game"
-  ],
-  "author": "Kay-Uwe Kirstein",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kkirstein/programming-mazes/issues"
-  },
-  "homepage": "https://github.com/kkirstein/programming-mazes#readme",
-  "devDependencies": {
-    "expect.js": "^0.3.1"
-  }
+	"name": "mazes",
+	"version": "1.0.0",
+	"description": "Code from the book Mazes for Programmers",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kkirstein/programming-mazes.git"
+	},
+	"keywords": [
+		"game"
+		],
+	"author": "Kay-Uwe Kirstein",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/kkirstein/programming-mazes/issues"
+	},
+	"homepage": "https://github.com/kkirstein/programming-mazes#readme",
+	"devDependencies": {
+		"expect.js": "^0.3.1"
+	},
+	"jshintConfig": {
+		"esnext": true,
+		"node":true
+	}
 }
