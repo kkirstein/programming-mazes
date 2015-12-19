@@ -5,5 +5,7 @@
 ///
 library mazes;
 
+import 'dart:collection';
+
 part 'grid.dart';
 part 'cell.dart';

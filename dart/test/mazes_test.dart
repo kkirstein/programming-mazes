@@ -19,6 +19,22 @@ void main() {
       expect(cell.row, equals(1));
       expect(cell.column, equals(2));
     });
+
+    test('link another cell', () {
+      Cell other = new Cell(3, 4);
+      cell.link(other);
+      expect(cell.linked(other), isTrue);
+    });
+
+    test('show all linked cells', () {
+      Cell other1 = new Cell(11, 12);
+      Cell other2 = new Cell(21, 22);
+      cell.link(other1);
+      cell.link(other2);
+      expect(cell.links().length, equals(2));
+      expect(cell.links(), contains(other1));
+      expect(cell.links(), contains(other2));
+    });
   });
 
   group('Grid class', () {
