@@ -5,5 +5,5 @@
 ///
 library mazes;
 
-part 'src/grid.dart';
-part 'src/cell.dart';
+part 'grid.dart';
+part 'cell.dart';
