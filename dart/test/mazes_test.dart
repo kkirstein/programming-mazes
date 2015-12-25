@@ -18,6 +18,11 @@ void main() {
       expect(cell, new isInstanceOf<Cell>());
       expect(cell.row, equals(1));
       expect(cell.column, equals(2));
+      expect(cell.north, isNull);
+      expect(cell.south, isNull);
+      expect(cell.west, isNull);
+      expect(cell.east, isNull);
+      expect(cell.neighbors(), isEmpty);
     });
 
     test('link another cell', () {
@@ -34,6 +39,17 @@ void main() {
       expect(cell.links().length, equals(2));
       expect(cell.links(), contains(other1));
       expect(cell.links(), contains(other2));
+    });
+
+    test('show neighbor cells', () {
+      Cell other1 = new Cell(11, 12);
+      Cell other2 = new Cell(21, 22);
+      expect(cell.neighbors(), isEmpty);
+      cell.north = other1;
+      cell.west = other2;
+      expect(cell.neighbors(), hasLength(2));
+      expect(cell.neighbors(), contains(other1));
+      expect(cell.neighbors(), contains(other2));
     });
   });
 
