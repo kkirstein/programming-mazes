@@ -77,6 +77,10 @@ void main() {
       expect(cell.column, equals(2));
     });
 
+    test('has a size property', () {
+      expect(grid.size, equals(24));
+    });
+
     test('returns null on out-of-bound access', () {
       expect(grid.getCell(4,6), isNull);
     });

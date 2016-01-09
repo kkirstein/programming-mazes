@@ -21,6 +21,9 @@ class Grid {
     _rand = new Random();
   }
 
+  // getter for grid size
+  int get size => rows * columns;
+
   // random access of grid cells
   Cell getCell(int row, int column) {
     if (row >= 0 && row < rows && column >= 0 && column < columns) {
