@@ -46,6 +46,6 @@ class Cell {
 
   // toString interface
   String toString() {
-    return "Cell: x: ${column}, y: ${row}";
+    return "Cell: row: ${row}, col: ${column}";
   }
 }

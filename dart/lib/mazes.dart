@@ -6,6 +6,7 @@
 library mazes;
 
 import 'dart:collection';
+import 'dart:math' show Random;
 
 part 'grid.dart';
 part 'cell.dart';

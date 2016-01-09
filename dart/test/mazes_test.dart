@@ -73,8 +73,51 @@ void main() {
       expect(cell.column, equals(0));
       cell = grid.getCell(1,2);
       expect(cell, new isInstanceOf<Cell>());
-      expect(cell.column, equals(1));
-      expect(cell.row, equals(2));
+      expect(cell.row, equals(1));
+      expect(cell.column, equals(2));
     });
+
+    test('returns null on out-of-bound access', () {
+      expect(grid.getCell(4,6), isNull);
+    });
+
+    test('initializes cell neighbors', () {
+      var cell = grid.getCell(2,3);
+      expect(cell.north.row, equals(1));
+      expect(cell.north.column, equals(3));
+      expect(cell.south.row, equals(3));
+      expect(cell.south.column, equals(3));
+      expect(cell.west.row, equals(2));
+      expect(cell.west.column, equals(2));
+      expect(cell.east.row, equals(2));
+      expect(cell.east.column, equals(4));
+    });
+
+    test('handles grid borders correctly', () {
+      expect(grid.getCell(0, 0).north, isNull);
+      expect(grid.getCell(0, 0).west, isNull);
+      expect(grid.getCell(0, 0).south, new isInstanceOf<Cell>());
+      expect(grid.getCell(0, 0).east, new isInstanceOf<Cell>());
+
+      expect(grid.getCell(3, 0).south, isNull);
+      expect(grid.getCell(3, 0).west, isNull);
+      expect(grid.getCell(3, 0).north, new isInstanceOf<Cell>());
+      expect(grid.getCell(3, 0).east, new isInstanceOf<Cell>());
+
+      expect(grid.getCell(0, 5).north, isNull);
+      expect(grid.getCell(0, 5).east, isNull);
+      expect(grid.getCell(0, 5).south, new isInstanceOf<Cell>());
+      expect(grid.getCell(0, 5).west, new isInstanceOf<Cell>());
+
+      expect(grid.getCell(3, 5).south, isNull);
+      expect(grid.getCell(3, 5).east, isNull);
+      expect(grid.getCell(3, 5).north, new isInstanceOf<Cell>());
+      expect(grid.getCell(3, 5).west, new isInstanceOf<Cell>());
+    });
+
+    test('selects a random cell', () {
+      expect(grid.randomCell(), new isInstanceOf<Cell>());
+    });
+
   });
 }
