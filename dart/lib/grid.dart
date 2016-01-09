@@ -5,11 +5,40 @@
 
 part of mazes;
 
-/// Checks if you are awesome. Spoiler: you are.
+/// Grid class to hold all cells of a maze
 class Grid {
   int rows;
   int columns;
 
+  List<Cell> _grid;
+
   // constructor
-  Grid(this.rows, this.columns);
+  Grid(this.rows, this.columns) {
+    _grid = prepareGrid();
+    configureCells();
+  }
+
+  // random access of grid cells
+//  Cell operator [](row, column) {
+//    return _grid[row*columns + columns];
+//  }
+  Cell getCell(int row, int column) {
+    if (row >= 0 && row < rows && column >= 0 && column < columns) {
+      return _grid[row * columns + column];
+    } else {
+      return null;
+    }
+  }
+
+  List<Cell> prepareGrid() {
+    return new List.generate(rows*columns, (i) => new Cell(i % columns, i ~/ columns));
+  }
+
+  configureCells() {
+    // TODO
+  }
+
+  dumpGrid() {
+    _grid.forEach((cell) { print(cell); });
+  }
 }

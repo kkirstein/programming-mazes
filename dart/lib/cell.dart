@@ -43,4 +43,9 @@ class Cell {
 
     return list.where((e) => e != null);
   }
+
+  // toString interface
+  String toString() {
+    return "Cell: x: ${column}, y: ${row}";
+  }
 }

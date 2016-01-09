@@ -25,13 +25,13 @@ void main() {
       expect(cell.neighbors(), isEmpty);
     });
 
-    test('link another cell', () {
+    test('has links to other cells', () {
       Cell other = new Cell(3, 4);
       cell.link(other);
       expect(cell.linked(other), isTrue);
     });
 
-    test('show all linked cells', () {
+    test('shows all linked cells', () {
       Cell other1 = new Cell(11, 12);
       Cell other2 = new Cell(21, 22);
       cell.link(other1);
@@ -41,7 +41,7 @@ void main() {
       expect(cell.links(), contains(other2));
     });
 
-    test('show neighbor cells', () {
+    test('shows neighbor cells', () {
       Cell other1 = new Cell(11, 12);
       Cell other2 = new Cell(21, 22);
       expect(cell.neighbors(), isEmpty);
@@ -64,6 +64,17 @@ void main() {
       expect(grid, new isInstanceOf<Grid>());
       expect(grid.rows, equals(4));
       expect(grid.columns, equals(6));
+    });
+
+    test('has grid of cells', () {
+      var cell = grid.getCell(0,0);
+      expect(cell, new isInstanceOf<Cell>());
+      expect(cell.row, equals(0));
+      expect(cell.column, equals(0));
+      cell = grid.getCell(1,2);
+      expect(cell, new isInstanceOf<Cell>());
+      expect(cell.column, equals(1));
+      expect(cell.row, equals(2));
     });
   });
 }
