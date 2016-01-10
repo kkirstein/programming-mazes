@@ -64,6 +64,16 @@ class Grid {
   }
 
   // iterate over each row
+  void forEachRow(void action(List<Cell> row)) {
+    for (int i=0; i<rows; i++) {
+      action(_grid.getRange(i*columns, (i+1)*columns));
+    }
+  }
+
+  // iterate over each cell
+  void forEachCell(void action(Cell cell)) {
+    _grid.forEach(action);
+  }
 
   // dump grid for debug purpose
   dumpGrid() {

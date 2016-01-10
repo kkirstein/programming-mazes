@@ -67,11 +67,11 @@ void main() {
     });
 
     test('has grid of cells', () {
-      var cell = grid.getCell(0,0);
+      var cell = grid.getCell(0, 0);
       expect(cell, new isInstanceOf<Cell>());
       expect(cell.row, equals(0));
       expect(cell.column, equals(0));
-      cell = grid.getCell(1,2);
+      cell = grid.getCell(1, 2);
       expect(cell, new isInstanceOf<Cell>());
       expect(cell.row, equals(1));
       expect(cell.column, equals(2));
@@ -82,11 +82,11 @@ void main() {
     });
 
     test('returns null on out-of-bound access', () {
-      expect(grid.getCell(4,6), isNull);
+      expect(grid.getCell(4, 6), isNull);
     });
 
     test('initializes cell neighbors', () {
-      var cell = grid.getCell(2,3);
+      var cell = grid.getCell(2, 3);
       expect(cell.north.row, equals(1));
       expect(cell.north.column, equals(3));
       expect(cell.south.row, equals(3));
@@ -123,5 +123,22 @@ void main() {
       expect(grid.randomCell(), new isInstanceOf<Cell>());
     });
 
+    test('iterate over rows of cells', () {
+      var count = 0;
+      grid.forEachRow((row) {
+        expect(row.length, equals(6));
+        count++;
+      });
+      expect(count, equals(4));
+    });
+
+    test('iterate over all cells', () {
+      var count = 0;
+      grid.forEachCell((cell) {
+        expect(cell, new isInstanceOf<Cell>());
+        count++;
+      });
+      expect(count, equals(24));
+    });
   });
 }
