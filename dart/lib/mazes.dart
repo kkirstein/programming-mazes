@@ -10,3 +10,4 @@ import 'dart:math' show Random;
 
 part 'grid.dart';
 part 'cell.dart';
+part 'binary_tree.dart';
