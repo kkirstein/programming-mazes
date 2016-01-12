@@ -17,8 +17,10 @@ class BinaryTree {
         neighbors.add(cell.east);
       }
 
-      var index = rand.nextInt(neighbors.length);
-      cell.link(neighbors[index]);
+      if (neighbors.isNotEmpty) {
+        var index = rand.nextInt(neighbors.length);
+        cell.link(neighbors[index]);
+      }
     });
 
     return grid;
