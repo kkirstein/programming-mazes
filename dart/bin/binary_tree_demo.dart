@@ -10,4 +10,6 @@ main() {
 
   var grid = new Grid(4, 4);
   BinaryTree.on(grid);
+
+  print(grid);
 }

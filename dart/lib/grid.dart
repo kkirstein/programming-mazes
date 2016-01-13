@@ -73,6 +73,31 @@ class Grid {
     _grid.forEach(action);
   }
 
+  // pretty-print grid on concole
+  String toString() {
+    StringBuffer output = new StringBuffer("+" + "---+" * columns + "\n");
+
+    forEachRow((row) {
+      StringBuffer top = new StringBuffer("|");
+      StringBuffer bottom = new StringBuffer("+");
+
+      row.forEach((cell) {
+        var body = "   ";
+        var east_boundary = (cell.linked(cell.east))? " " : "|";
+        top.writeAll([body, east_boundary]);
+
+        var south_boundary = (cell.linked(cell.south))? "   " : "---";
+        var corner = "+";
+        bottom.writeAll([south_boundary, corner]);
+      });
+
+      output.writeAll([top, "\n"]);
+      output.writeAll([bottom, "\n"]);
+    });
+
+    return output.toString();
+  }
+
   // dump grid for debug purpose
   dumpGrid() {
     _grid.forEach((cell) {
