@@ -5,6 +5,7 @@ part of mazes;
 
 class Sidewinder {
 
+  // static method to generate links on given grid
   static Grid on(Grid grid) {
     var rand = new Random();
 

@@ -8,6 +8,8 @@ library mazes;
 import 'dart:collection';
 import 'dart:math' show Random;
 
+import 'package:image/image.dart';
+
 part 'grid.dart';
 part 'cell.dart';
 part 'binary_tree.dart';

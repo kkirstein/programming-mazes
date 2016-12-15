@@ -4,6 +4,7 @@
 part of mazes;
 
 class BinaryTree {
+
   // static method to generate links on given grid
   static Grid on(Grid grid) {
     var rand = new Random();

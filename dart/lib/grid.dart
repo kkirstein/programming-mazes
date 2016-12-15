@@ -63,8 +63,8 @@ class Grid {
 
   // iterate over each row
   void forEachRow(void action(List<Cell> row)) {
-    for (int i=0; i<rows; i++) {
-      action(_grid.getRange(i*columns, (i+1)*columns));
+    for (int i = 0; i < rows; i++) {
+      action(_grid.getRange(i * columns, (i + 1) * columns));
     }
   }
 
@@ -73,7 +73,7 @@ class Grid {
     _grid.forEach(action);
   }
 
-  // pretty-print grid on concole
+  // pretty-print grid on console
   String toString() {
     StringBuffer output = new StringBuffer("+" + "---+" * columns + "\n");
 
@@ -83,10 +83,10 @@ class Grid {
 
       row.forEach((cell) {
         var body = "   ";
-        var east_boundary = (cell.linked(cell.east))? " " : "|";
+        var east_boundary = (cell.linked(cell.east)) ? " " : "|";
         top.writeAll([body, east_boundary]);
 
-        var south_boundary = (cell.linked(cell.south))? "   " : "---";
+        var south_boundary = (cell.linked(cell.south)) ? "   " : "---";
         var corner = "+";
         bottom.writeAll([south_boundary, corner]);
       });
@@ -96,6 +96,30 @@ class Grid {
     });
 
     return output.toString();
+  }
+
+  // generate image of maze grid
+  Image toImage([int cell_size = 10]) {
+    final width = cell_size * columns;
+    final height = cell_size * rows;
+    var img = new Image(width, height, Image.RGB);
+
+    final background = getColor(0, 0, 0);
+    final wall = getColor(255, 255, 255);
+
+    forEachCell((cell) {
+      var x1 = cell.column * cell_size;
+      var y1 = cell.row * cell_size;
+      var x2 = (cell.column + 1) * cell_size;
+      var y2 = (cell.row + 1) * cell_size;
+
+      if (! cell.north) img = drawLine(img, x1, y1, x2, y1, wall);
+      if (! cell.west) img = drawLine(img, x1, y1, x1, y2, wall);
+      if (! cell.east) img = drawLine(img, x2, y1, x2, y2, wall);
+      if (! cell.south) img = drawLine(img, x1, y2, x2, y2, wall);
+    });
+
+    return img;
   }
 
   // dump grid for debug purpose
