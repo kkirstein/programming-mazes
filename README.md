@@ -17,3 +17,7 @@ Development stalled, as I am losing interest in Dart
 
 Currently, my favorite porgramming language
 
+# License
+
+MIT
+
