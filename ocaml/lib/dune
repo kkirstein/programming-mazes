@@ -1,3 +1,5 @@
 (library
- (name mazes))
+ (name mazes)
+ (public_name mazes)
+ (libraries hashset))
 

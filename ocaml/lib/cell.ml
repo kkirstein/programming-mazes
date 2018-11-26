@@ -9,7 +9,7 @@
 type t = {
   row : int;
   column : int;
-  mutable links : t list
+  mutable links : t Hashset.t
 }
 
 (**
@@ -18,14 +18,27 @@ type t = {
 let create row col = {
   row = row;
   column = col;
-  links = []
+  links = Hashset.create 64
 }
 
 
 (**
  * link two cell together
  *)
-let link ?(bidi=true) c1 c2 =
-  c1.links <- c2 :: c1.links;
-  c2.links <- c1 :: c2.links
+let link c1 c2 =
+  Hashset.add c1.links c2;
+  Hashset.add c2.links c1
+
+(**
+ * unlink two cells
+ *)
+let unlink c1 c2 =
+  Hashset.remove c1.links c2;
+  Hashset.remove c2.links c1
+
+(**
+ * predicate whether two cells are linked
+ *)
+let linkedp c1 c2 =
+  Hashset.mem c1.links c2
 

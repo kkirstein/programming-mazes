@@ -9,6 +9,7 @@ build: [
 ]
 depends: [
 	"cmdliner"
+	"hashset"
 	"lwt"
 	"num"
 ]
