@@ -8,19 +8,19 @@
 type t = {
   row : int;
   col : int;
-  north : t;
-  south : t;
-  east : t;
-  west : t;
+  mutable north : t option;
+  mutable south : t option;
+  mutable east : t option;
+  mutable west : t option;
   mutable links : t Hashset.t
 }
 
 (**
  * Creates a cell for given position
 *)
-let create row col north south east west = {
+let create row col = {
   row; col;
-  north; south; east; west;
+  north = None; south = None; east = None; west = None;
   links = Hashset.create 64
 }
 
@@ -57,6 +57,6 @@ let links c =
  *)
 let neighbors c =
   [c.north; c.south; c.east; c.west] |>
-  List.filter (Hashset.mem c.links)
+  List.fold_left (fun acc x -> match x with Some c -> c :: acc | None -> acc) []
 
 
