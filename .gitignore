@@ -8,3 +8,6 @@
 # Vagrant
 .vagrant
 
+# rust output
+**/Cargo.lock
+target
